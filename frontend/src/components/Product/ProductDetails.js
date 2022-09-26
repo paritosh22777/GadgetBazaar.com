@@ -78,7 +78,7 @@ function ProductDetails() {
       alert.success("Review submitted successfully");
       dispatch({ type: NEW_REVIEW_RESET });
     }
-    // req.params.id (in backend) = match.params.id (in frontend / react)
+    // req.params.id (in backend) = id -> useParams() (in frontend / react)
     dispatch(getProductDetails(id));
   }, [dispatch, id, error, alert, reviewError, success]);
 

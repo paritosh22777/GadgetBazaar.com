@@ -73,7 +73,7 @@ function Products() {
           {filteredProductsCount === 0 ? (
             <div className="products-not-found">
               <ErrorIcon />
-              <Typography>Sorry no products found</Typography>
+              <Typography>Sorry, no products found</Typography>
             </div>
           ) : (
             <Fragment>

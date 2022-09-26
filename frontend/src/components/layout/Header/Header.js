@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import logo from "../../../images/logo.jpg";
+import logo from "../../../images/logo-light-black.jpg";
 import Search from "./Search";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LoginIcon from "@mui/icons-material/Login";
