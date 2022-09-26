@@ -1,0 +1,185 @@
+.speed-dial {
+  position: fixed;
+  right: 3vmax;
+  top: 6vmax;
+}
+
+.speed-dial-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 100%;
+}
+
+.header {
+  width: 100%;
+  height: 10vh;
+  background-color: rgb(34, 33, 33);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header > div,
+header > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
+
+.left-header {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.left-header:hover {
+  cursor: pointer;
+}
+
+.left-header > img {
+  width: 300px;
+  height: 100%;
+  background-color: black;
+}
+
+.center-header-one {
+  width: 50%;
+  padding-left: 20px;
+}
+
+.center-header-two {
+  width: 15%;
+  padding-left: 40px;
+}
+
+.center-header-two > span {
+  display: flex;
+  align-items: center;
+  width: auto;
+  height: 80%;
+  color: #ffc000;
+  transition: all 0.5s;
+  font: bold 1.2vmax "Roboto";
+}
+
+.center-header-two > span > svg {
+  width: 40px;
+  height: 40px;
+  padding-left: 10px;
+}
+
+.center-header-two > span:hover {
+  cursor: pointer;
+  color: tomato;
+}
+
+.right-header {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.right-header > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+  color: #ffc000;
+}
+
+.right-header .MuiSvgIcon-root {
+  width: 40px;
+  height: 40px;
+  padding-right: 10px;
+}
+
+.right-header .MuiBadge-badge {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  margin-right: 10px;
+}
+
+.right-header h2 {
+  font: bold 1.8vmax "Roboto";
+}
+
+.right-header > span:hover {
+  color: tomato;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .speed-dial {
+    right: 2vmax;
+    top: 18vmax;
+  }
+
+  .header {
+    height: 110px;
+  }
+
+  .center-header-one {
+    position: absolute;
+    transform: translateY(50%);
+  }
+
+  .left-header,
+  .center-header-two,
+  .right-header {
+    position: absolute;
+    top: 0;
+    height: 60px;
+  }
+
+  .left-header {
+    left: 0;
+    width: 36%;
+  }
+
+  .left-header > img {
+    width: 141px;
+    height: 30px;
+    margin-right: 10%;
+  }
+
+  .center-header-one {
+    width: 90%;
+    margin-top: 20px;
+    height: 40px;
+  }
+
+  .center-header-two {
+    width: 32%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .center-header-two > span {
+    width: 90%;
+    margin-left: 12%;
+  }
+
+  .center-header-two > span > h2 {
+    font-size: 14px;
+  }
+
+  .right-header {
+    width: 28%;
+    right: 0;
+  }
+
+  .right-header .MuiSvgIcon-root {
+    width: 33px;
+    height: 33px;
+  }
+
+  .right-header > span > h2 {
+    font-size: 16px;
+  }
+}

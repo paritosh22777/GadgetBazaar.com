@@ -1,0 +1,44 @@
+.update-order-form {
+  margin: 5vmax 0;
+  padding: 3vmax;
+  background-color: white;
+}
+
+.update-order-form > div {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.update-order-form > div > select {
+  padding: 1vmax 4vmax;
+  margin: 2rem 0;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.267);
+  border-radius: 4px;
+  font: 300 0.9vmax cursive;
+  outline: none;
+}
+
+.update-order-form > div > svg {
+  position: absolute;
+  transform: translateX(1vmax);
+  font-size: 1.6vmax;
+  color: rgba(0, 0, 0, 0.623);
+}
+
+@media screen and (max-width: 600px) {
+  .update-order-form {
+    padding: 5vmax;
+  }
+
+  .update-order-form > div > select {
+    padding: 2.5vmax 5vmax;
+    font: 300 1.7vmax "Sans-serif";
+  }
+
+  .update-order-form > div > svg {
+    font-size: 2.8vmax;
+  }
+}

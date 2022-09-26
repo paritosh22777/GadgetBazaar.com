@@ -1,0 +1,29 @@
+.MuiStepper-root {
+  padding: 2% 0 2.5%;
+  width: auto;
+}
+
+.MuiStepConnector-line {
+  display: none !important;
+}
+
+.MuiStepConnector-root {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.349);
+}
+
+.MuiStepConnector-active,
+.MuiStepConnector-completed {
+  background-color: tomato;
+}
+
+@media screen and (max-width: 600px) {
+  .MuiStepper-root {
+    width: auto;
+    margin: 8px 0;
+  }
+
+  /* .MuiSpeedDial-root {
+    visibility: hidden;
+  } */
+}
