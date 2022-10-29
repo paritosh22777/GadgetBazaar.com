@@ -7,4 +7,6 @@
 6. Use of Nodemailer module to send email automatically to user for password recovery.
 7. Tested the APIs using Postman.
 8. Deployed on Heroku.
-9. Link :- https://gadget-bazaar.herokuapp.com/
+9. Note: Use 4000003560000008 as card number for testing Stripe API payment service.
+# Live link :-
+https://gadget-bazaar.herokuapp.com/
