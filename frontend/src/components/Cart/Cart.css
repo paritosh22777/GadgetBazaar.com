@@ -1,0 +1,231 @@
+.empty-cart,
+.unauthenticated-cart {
+  margin: auto;
+  text-align: center;
+  padding: 10vmax;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty-cart > svg,
+.unauthenticated-cart > svg {
+  font-size: 5vmax;
+  color: tomato;
+}
+
+.empty-cart > p {
+  font-size: 2vmax;
+  padding: 1vmax;
+}
+
+.unauthenticated-cart > p {
+  font-size: 2vmax;
+  padding: 1.5vmax 0;
+}
+
+.empty-cart > a {
+  background-color: tomato;
+  color: white;
+  border: none;
+  padding: 1vmax 3vmax;
+  cursor: pointer;
+  font: 400 1.1vmax "Roboto";
+  text-decoration: none;
+  transition: all 0.5s;
+}
+
+.unauthenticated-cart > a {
+  background-color: tomato;
+  color: white;
+  border: none;
+  padding: 0.5vmax 1.1vmax;
+  cursor: pointer;
+  font: 400 1.3vmax "Roboto";
+  text-decoration: none;
+  transition: all 0.5s;
+}
+
+.empty-cart > a:hover,
+.unauthenticated-cart > a:hover {
+  background-color: rgb(179, 66, 46);
+}
+
+.cart-page {
+  padding: 5vmax;
+}
+
+.cart-header {
+  background-color: tomato;
+  width: 90%;
+  box-sizing: border-box;
+  margin: auto;
+  color: white;
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+  font: 300 0.7vmax "Roboto";
+}
+
+.cart-header > p {
+  margin: 10px;
+}
+
+.quantity-heading {
+  padding-left: 15px;
+}
+
+.cart-header > p:last-child {
+  text-align: end;
+}
+
+.cart-container {
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+}
+
+.cart-input {
+  display: flex;
+  align-items: center;
+  height: 8vmax;
+}
+
+.cart-input > button {
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.616);
+  padding: 0.5vmax;
+  cursor: pointer;
+  color: white;
+  transition: all 0.5s;
+  width: 25px;
+}
+
+.cart-input > button:hover {
+  background-color: rgba(0, 0, 0, 0.767);
+}
+
+.cart-input > input {
+  border: none;
+  padding: 0.5vmax;
+  width: 2vmax;
+  text-align: center;
+  outline: none;
+  font: 400 0.8vmax "Roboto";
+  color: rgba(0, 0, 0, 0.74);
+}
+
+.cart-subtotal {
+  display: flex;
+  padding: 0.5vmax;
+  height: 8vmax;
+  align-items: center;
+  box-sizing: border-box;
+  font: 300 1vmax cursive;
+  justify-content: flex-end;
+  color: rgba(0, 0, 0, 0.753);
+}
+
+.cart-gross-total {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr;
+}
+
+.cart-gross-profit-box {
+  border-top: 3px solid tomato;
+  margin: 1vmax 4vmax;
+  box-sizing: border-box;
+  padding: 2vmax 0;
+  font: 300 1vmax "Roboto";
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkout-button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.checkout-button > button {
+  background-color: tomato;
+  color: white;
+  border: none;
+  padding: 0.8vmax 4vmax;
+  width: 50%;
+  font: 300 0.8vmax "Roboto";
+  margin: 1vmax 4vmax;
+  cursor: pointer;
+  border-radius: 30px;
+}
+
+@media screen and (max-width: 600px) {
+  .unauthenticated-cart > p {
+    font-size: 2.7vmax;
+    padding: 2vmax 0;
+  }
+
+  .unauthenticated-cart > a {
+    font-size: 2vmax;
+    padding: 1.2vmax 2.4vmax;
+  }
+
+  .cart-page {
+    padding: 0;
+    min-height: 60vh;
+  }
+
+  .cart-header {
+    width: 100%;
+    font: 300 1.7vmax "Roboto";
+  }
+
+  .quantity-heading {
+    padding-right: 22px;
+  }
+
+  .cart-container {
+    width: 100%;
+    grid-template-columns: 3fr 1fr 1fr;
+  }
+
+  .cart-input {
+    height: 20vmax;
+  }
+
+  .cart-input > button {
+    width: 22px;
+    padding: 1vmax;
+  }
+
+  .cart-input > input {
+    width: 2vmax;
+    padding: 1.5vmax;
+    font: 400 1.8vmax "Roboto";
+  }
+
+  .cart-subtotal {
+    padding: 1.5vmax;
+    height: 20vmax;
+    font: 300 2vmax "Roboto";
+  }
+
+  .cart-gross-total {
+    display: grid;
+    grid-template-columns: 0fr 2fr;
+  }
+
+  .cart-gross-profit-box {
+    padding: 2vmax;
+    font: 300 2vmax "Roboto";
+  }
+
+  .checkout-button > button {
+    padding: 2vmax 4vmax;
+    width: 100%;
+    font: 300 2vmax "Roboto";
+  }
+}

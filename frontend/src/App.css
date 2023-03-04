@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.yellow-color {
+  color: rgb(226, 200, 8) !important;
+}
+
+.green-color {
+  color: green !important;
+}
+
+.red-color {
+  color: red !important;
+}

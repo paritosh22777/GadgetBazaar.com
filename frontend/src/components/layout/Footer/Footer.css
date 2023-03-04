@@ -1,0 +1,242 @@
+.footer {
+  margin-top: 10vmax;
+  padding: 2vmax;
+  background-color: rgb(34, 33, 33);
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.left-footer {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+}
+
+.left-footer > h3 {
+  font-family: "Roboto";
+  font-size: 1.2vmax;
+  text-align: center;
+  padding: 2vmax;
+}
+
+.footer-social-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0 2.3vmax 2vmax;
+}
+
+.footer-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 25px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.footer-icon:hover {
+  transform: scale(1.1);
+}
+
+.facebook {
+  background-color: #1278f3;
+}
+
+.facebook:hover {
+  background-color: black;
+  border: 1px solid #1278f3;
+  color: #1278f3;
+}
+
+.instagram {
+  background-color: #d32598;
+}
+
+.instagram:hover {
+  background-color: black;
+  border: 1px solid #d32598;
+  color: #d32598;
+}
+
+.twitter {
+  background-color: #1d9bf0;
+}
+
+.twitter:hover {
+  background-color: black;
+  border: 1px solid #1d9bf0;
+  color: #1d9bf0;
+}
+
+.youtube {
+  background-color: #fe0000;
+}
+
+.youtube:hover {
+  background-color: black;
+  border: 1px solid #fe0000;
+  color: #fe0000;
+}
+
+.middle-footer {
+  width: 60%;
+  text-align: center;
+}
+
+.middle-footer > h1 {
+  font-size: 3.2vmax;
+  font-family: "Roboto";
+  color: #eb4034;
+  padding-bottom: 10px;
+}
+
+.middle-footer > h3 {
+  font-size: 1.8vmax;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #fff200f2;
+  transition: all 0.5s;
+}
+
+.middle-footer > h3:hover {
+  transform: scaleX(1.15);
+}
+
+.footer-desc {
+  max-width: 60%;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin: 1vmax auto;
+  font-size: 1vmax;
+}
+
+.right-footer {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.right-footer > h3 {
+  font-family: "Roboto";
+  font-size: 1.2vmax;
+  padding-top: 2vmax;
+}
+
+.right-footer > a {
+  text-decoration: none;
+  font-size: 1.2vmax;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: white;
+  margin: 0.5vmax;
+  display: flex;
+  padding: 0.8vmax 0.2vmax 0.3vmax 0;
+  align-items: center;
+}
+
+.email-icon {
+  background-color: white;
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f44336;
+}
+
+.right-footer > a {
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.right-footer > a:hover {
+  color: #f44336;
+  transform: scale(1.05);
+}
+
+.right-footer > img {
+  padding-top: 0.8vmax;
+}
+
+@media screen and (max-width: 600px) {
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+  }
+
+  .middle-footer {
+    width: 100vw;
+    height: 100%;
+    position: relative;
+  }
+
+  .middle-footer > h1 {
+    font-size: 3vmax;
+  }
+
+  .middle-footer > h3 {
+    font-size: 3vmax;
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .footer-desc {
+    font-size: medium;
+    text-align: center;
+    max-width: unset;
+  }
+
+  .copyrighted {
+    position: absolute;
+    bottom: 0;
+    font-size: medium;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .left-footer {
+    width: auto;
+    position: absolute;
+    left: auto;
+    right: auto;
+    transform: translateY(3vh);
+    padding: 10px;
+  }
+
+  .left-footer > h3 {
+    font-size: 2.8vmax;
+  }
+
+  .right-footer {
+    padding-top: 10px;
+    position: absolute;
+    left: auto;
+    right: auto;
+    transform: translateY(110%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+  }
+
+  .right-footer > h3 {
+    font-size: 2.8vmax;
+  }
+
+  .right-footer > a {
+    width: auto;
+    padding-bottom: 8px;
+  }
+  .right-footer > a > h4 {
+    font-size: medium;
+  }
+}
