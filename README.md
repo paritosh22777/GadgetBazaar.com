@@ -9,4 +9,4 @@
 8. Deployed on Heroku.
 9. Note: Use 4000003560000008 as card number for testing Stripe API payment service.
 # Live link :-
-https://gadget-bazaar.herokuapp.com/
+https://gadgetbazaar-com.onrender.com
