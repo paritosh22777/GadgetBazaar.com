@@ -214,7 +214,7 @@
 
   .login-form > div > input,
   .signup-form > div > input {
-    padding: 2.5vmax 5vmax;
+    padding: 2.5vmax 6vmax;
     font: 300 1.8vmax "Roboto";
   }
 
@@ -225,7 +225,7 @@
 
   .login-form > div > span,
   .signup-form > div > span {
-    transform: translateX(63vmax);
+    padding-left: 31%;
   }
 
   .login-form > div > span > svg,

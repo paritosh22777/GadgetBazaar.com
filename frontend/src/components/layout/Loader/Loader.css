@@ -29,17 +29,10 @@
   }
 }
 
-/* @keyframes rotate {
-  0% {
-    transform: rotate(0deg);
+@media screen and (max-width: 600px) {
+  .circle {
+    width: 2vmax;
+    height: 2vmax;
+    margin: 0;
   }
-  25% {
-    transform: rotate(90deg);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  100% {
-    transform: rotate(720deg);
-  }
-} */
+}
