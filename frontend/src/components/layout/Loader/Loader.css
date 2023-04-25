@@ -7,16 +7,39 @@
   max-width: 100%;
 }
 
-.loading div {
-  width: 10vmax;
-  height: 10vmax;
-  border-bottom: 5px solid rgba(0, 0, 0, 0.719);
+.boundary {
+  width: 12vmax;
+  height: 12vmax;
+  border: 16px solid rgb(255, 234, 232);
   border-radius: 50%;
-  animation: loadingRotate 800ms linear infinite;
+  animation: loadingRotate 1600ms linear infinite;
+}
+
+.circle {
+  width: 1.2vmax;
+  height: 1.2vmax;
+  background-color: tomato;
+  margin: 12px;
+  border-radius: 50%;
 }
 
 @keyframes loadingRotate {
   to {
-    transform: rotateZ(-360deg);
+    transform: rotateZ(360deg);
   }
 }
+
+/* @keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(720deg);
+  }
+} */

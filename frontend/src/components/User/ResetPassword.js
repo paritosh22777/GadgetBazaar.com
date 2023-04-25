@@ -7,6 +7,8 @@ import { resetPassword, clearErrors } from "../../actions/userAction";
 import { useAlert } from "react-alert";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import LockIcon from "@mui/icons-material/Lock";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import Metadata from "../layout/Metadata";
 
 function ResetPassword() {
@@ -20,6 +22,8 @@ function ResetPassword() {
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
   const resetPasswordSubmit = (event) => {
     event.preventDefault();
@@ -57,7 +61,7 @@ function ResetPassword() {
                 <div>
                   <LockOpenIcon />
                   <input
-                    type="password"
+                    type={passwordVisible ? "text" : "password"}
                     placeholder="Password"
                     required
                     value={password}
@@ -65,11 +69,22 @@ function ResetPassword() {
                       setPassword(event.target.value);
                     }}
                   />
+                  <span
+                    onClick={() => {
+                      setPasswordVisible(!passwordVisible);
+                    }}
+                  >
+                    {passwordVisible ? (
+                      <VisibilityOffIcon />
+                    ) : (
+                      <VisibilityIcon />
+                    )}
+                  </span>
                 </div>
                 <div>
                   <LockIcon />
                   <input
-                    type="password"
+                    type={confirmPasswordVisible ? "text" : "password"}
                     placeholder="Confirm Password"
                     required
                     value={confirmPassword}
@@ -77,6 +92,17 @@ function ResetPassword() {
                       setConfirmPassword(event.target.value);
                     }}
                   />
+                  <span
+                    onClick={() => {
+                      setConfirmPasswordVisible(!confirmPasswordVisible);
+                    }}
+                  >
+                    {confirmPasswordVisible ? (
+                      <VisibilityOffIcon />
+                    ) : (
+                      <VisibilityIcon />
+                    )}
+                  </span>
                 </div>
                 <input
                   type="submit"

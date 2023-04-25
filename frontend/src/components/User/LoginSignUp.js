@@ -32,10 +32,9 @@ function LoginSignUp() {
   const { name, email, password } = user;
   const [avatar, setAvatar] = useState();
   const [avatarPreview, setAvatarPreview] = useState(profileIconPic);
-  const [passwordVisible, setPasswordVisible] = useState(false);
-  const handlePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
-  };
+  const [loginPasswordVisible, setLoginPasswordVisible] = useState(false);
+  const [registerPasswordVisible, setRegisterPasswordVisible] = useState(false);
+
   const loginSubmit = (event) => {
     event.preventDefault();
     dispatch(login(loginEmail, loginPassword));
@@ -144,7 +143,7 @@ function LoginSignUp() {
                 <div className="login-password">
                   <LockOpenIcon />
                   <input
-                    type={passwordVisible ? "text" : "password"}
+                    type={loginPasswordVisible ? "text" : "password"}
                     placeholder="Password"
                     className="password-field"
                     required
@@ -153,8 +152,12 @@ function LoginSignUp() {
                       setLoginPassword(event.target.value);
                     }}
                   />
-                  <span onClick={handlePasswordVisibility}>
-                    {passwordVisible ? (
+                  <span
+                    onClick={() => {
+                      setLoginPasswordVisible(!loginPasswordVisible);
+                    }}
+                  >
+                    {loginPasswordVisible ? (
                       <VisibilityOffIcon />
                     ) : (
                       <VisibilityIcon />
@@ -195,15 +198,19 @@ function LoginSignUp() {
                 <div className="signup-password">
                   <LockOpenIcon />
                   <input
-                    type={passwordVisible ? "text" : "password"}
+                    type={registerPasswordVisible ? "text" : "password"}
                     placeholder="Password"
                     required
                     name="password"
                     value={password}
                     onChange={registerDataChange}
                   />
-                  <span onClick={handlePasswordVisibility}>
-                    {passwordVisible ? (
+                  <span
+                    onClick={() => {
+                      setRegisterPasswordVisible(!registerPasswordVisible);
+                    }}
+                  >
+                    {registerPasswordVisible ? (
                       <VisibilityOffIcon />
                     ) : (
                       <VisibilityIcon />

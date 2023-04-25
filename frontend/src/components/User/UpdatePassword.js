@@ -8,6 +8,8 @@ import { useAlert } from "react-alert";
 import { UPDATE_PASSWORD_RESET } from "../../constants/userConstant";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import LockIcon from "@mui/icons-material/Lock";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import Metadata from "../layout/Metadata";
 
@@ -21,6 +23,9 @@ function UpdatePassword() {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [oldPasswordVisible, setOldPasswordVisible] = useState(false);
+  const [newPasswordVisible, setNewPasswordVisible] = useState(false);
+  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
   const updatePasswordSubmit = (event) => {
     event.preventDefault();
@@ -60,7 +65,7 @@ function UpdatePassword() {
                 <div>
                   <VpnKeyIcon />
                   <input
-                    type="password"
+                    type={oldPasswordVisible ? "text" : "password"}
                     placeholder="Old Password"
                     required
                     value={oldPassword}
@@ -68,11 +73,22 @@ function UpdatePassword() {
                       setOldPassword(event.target.value);
                     }}
                   />
+                  <span
+                    onClick={() => {
+                      setOldPasswordVisible(!oldPasswordVisible);
+                    }}
+                  >
+                    {oldPasswordVisible ? (
+                      <VisibilityOffIcon />
+                    ) : (
+                      <VisibilityIcon />
+                    )}
+                  </span>
                 </div>
                 <div>
                   <LockOpenIcon />
                   <input
-                    type="password"
+                    type={newPasswordVisible ? "text" : "password"}
                     placeholder="New Password"
                     required
                     value={newPassword}
@@ -80,11 +96,22 @@ function UpdatePassword() {
                       setNewPassword(event.target.value);
                     }}
                   />
+                  <span
+                    onClick={() => {
+                      setNewPasswordVisible(!newPasswordVisible);
+                    }}
+                  >
+                    {newPasswordVisible ? (
+                      <VisibilityOffIcon />
+                    ) : (
+                      <VisibilityIcon />
+                    )}
+                  </span>
                 </div>
                 <div>
                   <LockIcon />
                   <input
-                    type="password"
+                    type={confirmPasswordVisible ? "text" : "password"}
                     placeholder="Confirm Password"
                     required
                     value={confirmPassword}
@@ -92,6 +119,17 @@ function UpdatePassword() {
                       setConfirmPassword(event.target.value);
                     }}
                   />
+                  <span
+                    onClick={() => {
+                      setConfirmPasswordVisible(!confirmPasswordVisible);
+                    }}
+                  >
+                    {confirmPasswordVisible ? (
+                      <VisibilityOffIcon />
+                    ) : (
+                      <VisibilityIcon />
+                    )}
+                  </span>
                 </div>
                 <input
                   type="submit"
