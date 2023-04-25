@@ -72,7 +72,7 @@
 .login-form > div > input,
 .signup-form > div > input {
   padding: 1vmax 4vmax;
-  padding-right: 1vmax;
+  /* padding-right: 1vmax; */
   width: 100%;
   box-sizing: border-box;
   border: 1px solid rgba(0, 0, 0, 0.267);
@@ -87,6 +87,25 @@
   transform: translateX(1vmax);
   font-size: 1.6vmax;
   color: rgba(0, 0, 0, 0.623);
+}
+
+.login-form > div > span,
+.signup-form > div > span {
+  position: absolute;
+  transform: translate(18vmax, 0.2vmax);
+  color: rgba(0, 0, 0, 0.623);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.login-form > div > span:hover,
+.signup-form > div > span:hover {
+  color: tomato;
+}
+
+.login-form > div > span > svg,
+.signup-form > div > span > svg {
+  font-size: 1.9vmax;
 }
 
 .login-form > a {
@@ -202,6 +221,16 @@
 
   .login-form > div > svg,
   .signup-form > div > svg {
+    font-size: 2.8vmax;
+  }
+
+  .login-form > div > span,
+  .signup-form > div > span {
+    transform: translateX(63vmax);
+  }
+
+  .login-form > div > span > svg,
+  .signup-form > div > span > svg {
     font-size: 2.8vmax;
   }
 

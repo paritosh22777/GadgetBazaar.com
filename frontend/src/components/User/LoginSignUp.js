@@ -4,6 +4,8 @@ import Loader from "../layout/Loader/Loader";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import FaceIcon from "@mui/icons-material/Face";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import profileIconPic from "../../images/profile-icon.jpeg";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,7 +32,10 @@ function LoginSignUp() {
   const { name, email, password } = user;
   const [avatar, setAvatar] = useState();
   const [avatarPreview, setAvatarPreview] = useState(profileIconPic);
-
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const handlePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
   const loginSubmit = (event) => {
     event.preventDefault();
     dispatch(login(loginEmail, loginPassword));
@@ -139,14 +144,22 @@ function LoginSignUp() {
                 <div className="login-password">
                   <LockOpenIcon />
                   <input
-                    type="password"
+                    type={passwordVisible ? "text" : "password"}
                     placeholder="Password"
+                    className="password-field"
                     required
                     value={loginPassword}
                     onChange={(event) => {
                       setLoginPassword(event.target.value);
                     }}
                   />
+                  <span onClick={handlePasswordVisibility}>
+                    {passwordVisible ? (
+                      <VisibilityOffIcon />
+                    ) : (
+                      <VisibilityIcon />
+                    )}
+                  </span>
                 </div>
                 <Link to="/password/forgot">Forgot Password?</Link>
                 <input type="submit" value="LOGIN" className="login-button" />
@@ -182,13 +195,20 @@ function LoginSignUp() {
                 <div className="signup-password">
                   <LockOpenIcon />
                   <input
-                    type="password"
+                    type={passwordVisible ? "text" : "password"}
                     placeholder="Password"
                     required
                     name="password"
                     value={password}
                     onChange={registerDataChange}
                   />
+                  <span onClick={handlePasswordVisibility}>
+                    {passwordVisible ? (
+                      <VisibilityOffIcon />
+                    ) : (
+                      <VisibilityIcon />
+                    )}
+                  </span>
                 </div>
                 <div id="register-image">
                   <img src={avatarPreview} alt="Avatar Preview" />

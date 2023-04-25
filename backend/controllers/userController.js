@@ -8,14 +8,14 @@ const cloudinary = require("cloudinary");
 
 // Register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
-  const myCloud = await cloudinary.uploader.upload(req.body.avatar, {
+  const defaultAvatar = process.env.DEFAULT_AVATAR;
+  const avatar = req.file ? req.body.avatar : defaultAvatar;
+  const myCloud = await cloudinary.v2.uploader.upload(avatar, {
     folder: "avatars",
     width: 150,
     crop: "scale",
   });
-
   const { name, email, password } = req.body;
-
   const user = await User.create({
     name,
     email,
