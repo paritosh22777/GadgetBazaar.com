@@ -18,8 +18,13 @@
   font-size: 2vmax;
 }
 
+.order-success > h5 {
+  color: grey;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
 .order-success > a {
-  /* background-color: rgb(51, 51, 51); */
   background-color: tomato;
   color: white;
   border: none;
@@ -44,6 +49,10 @@
 
   .order-success > svg {
     font-size: 20vw;
+  }
+
+  .order-success > h5 {
+    margin: 5px 10px 0;
   }
 
   .order-success > p {

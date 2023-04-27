@@ -14,14 +14,18 @@ function ConfirmOrder() {
     (subtotal, item) => (subtotal = subtotal + item.quantity * item.price),
     0
   );
-  const shippingCharges = subTotal > 25000 ? 0 : 500;
+  // const shippingCharges = subTotal > 25000 ? 0 : 500;
   const tax = subTotal * 0.18;
-  let totalPrice = tax + shippingCharges + subTotal;
+  let totalPrice =
+    tax +
+    // shippingCharges +
+    subTotal;
   const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.pinCode}, ${shippingInfo.state}, ${shippingInfo.country}`;
+
   const proceedToPaymentHandler = () => {
     const data = {
       subTotal,
-      shippingCharges,
+      // shippingCharges,
       tax,
       totalPrice,
     };
@@ -76,10 +80,10 @@ function ConfirmOrder() {
                 <p>Subtotal: </p>
                 <span>₹{subTotal}</span>
               </div>
-              <div>
+              {/* <div>
                 <p>Shipping Charges:</p>
                 <span>₹{shippingCharges}</span>
-              </div>
+              </div> */}
               <div>
                 <p>GST: </p>
                 <span>₹{tax.toFixed(2)}</span>

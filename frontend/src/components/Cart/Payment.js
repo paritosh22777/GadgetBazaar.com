@@ -1,32 +1,18 @@
 import React, { Fragment, useEffect, useRef } from "react";
 import CheckoutSteps from "./CheckoutSteps";
 import Metadata from "../layout/Metadata";
-import { Typography } from "@mui/material";
+// import { Typography } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { useAlert } from "react-alert";
-import {
-  CardNumberElement,
-  CardCvcElement,
-  CardExpiryElement,
-  useStripe,
-  useElements,
-} from "@stripe/react-stripe-js";
 import axios from "axios";
 import "./Payment.css";
-import CreditCardIcon from "@mui/icons-material/CreditCard";
-import EventIcon from "@mui/icons-material/Event";
-import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import { useNavigate } from "react-router-dom";
 import { createOrder, clearErrors } from "../../actions/orderAction";
 
 function Payment() {
-  const navigate = useNavigate();
   const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
   const dispatch = useDispatch();
   const alert = useAlert();
-  const stripe = useStripe();
-  const elements = useElements();
-  const payButton = useRef(null);
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const { error } = useSelector((state) => state.newOrder);
@@ -35,7 +21,7 @@ function Payment() {
     amount: Math.round(orderInfo.totalPrice * 100), //in paise
   };
 
-  const order = {
+  const userOrder = {
     shippingInfo,
     orderItems: cartItems,
     itemsPrice: orderInfo.subTotal,
@@ -46,53 +32,53 @@ function Payment() {
 
   const submitHandler = async (event) => {
     event.preventDefault();
-    payButton.current.disabled = true;
     try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
+      // const config = {
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      // };
+      const {
+        data: { key },
+      } = await axios.get("/api/v1/getkey");
+      const {
+        data: { order },
+      } = await axios.post(
+        "/api/v1/checkout",
+        paymentData
+        // config
+      );
+
+      const options = {
+        key,
+        amount: order.amount,
+        currency: "INR",
+        name: "GadgetBazaar.com",
+        description: "Test Transaction",
+        image: "https://example.com/your_logo",
+        order_id: order.id,
+        callback_url: "/api/v1/paymentverification",
+        prefill: {
+          name: user.name,
+          email: user.email,
+          contact: shippingInfo.phoneNumber,
+        },
+        notes: {
+          address: "Razorpay Corporate Office",
+        },
+        theme: {
+          color: "#ff6347",
         },
       };
-      const { data } = await axios.post(
-        "/api/v1/payment/process",
-        paymentData,
-        config
-      );
-      const client_secret = data.client_secret;
-      if (!stripe || !elements) return;
-      const result = await stripe.confirmCardPayment(client_secret, {
-        payment_method: {
-          card: elements.getElement(CardNumberElement),
-          billing_details: {
-            name: user.name,
-            email: user.email,
-            address: {
-              line1: shippingInfo.address,
-              city: shippingInfo.city,
-              state: shippingInfo.state,
-              postal_code: shippingInfo.pinCode,
-              country: shippingInfo.country,
-            },
-          },
-        },
-      });
-      if (result.error) {
-        payButton.current.disabled = false;
-        alert.error(result.error.message);
-      } else {
-        if (result.paymentIntent.status === "succeeded") {
-          order.paymentInfo = {
-            id: result.paymentIntent.id,
-            status: result.paymentIntent.status,
-          };
-          dispatch(createOrder(order));
-          navigate("/success");
-        } else {
-          alert.error("There's some issue while processing payment");
-        }
-      }
+      const rzp = new window.Razorpay(options);
+      rzp.open();
+      userOrder.paymentInfo = {
+        id: order.id,
+        status: order.status === "created" ? "succeeded" : "failed",
+      };
+
+      dispatch(createOrder(userOrder));
     } catch (error) {
-      payButton.current.disabled = false;
       alert.error(error.response.data.message);
     }
   };
@@ -112,23 +98,9 @@ function Payment() {
           className="payment-form"
           onSubmit={(event) => submitHandler(event)}
         >
-          <Typography>Card Info</Typography>
-          <div>
-            <CreditCardIcon />
-            <CardNumberElement className="payment-input" />
-          </div>
-          <div>
-            <EventIcon />
-            <CardExpiryElement className="payment-input" />
-          </div>
-          <div>
-            <VpnKeyIcon />
-            <CardCvcElement className="payment-input" />
-          </div>
           <input
             type="submit"
             value={`PAY ₹${orderInfo && orderInfo.totalPrice.toFixed(2)}`}
-            ref={payButton}
             className="payment-form-button"
           />
         </form>

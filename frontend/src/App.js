@@ -22,8 +22,6 @@ import Cart from "./components/Cart/Cart";
 import Shipping from "./components/Cart/Shipping";
 import ConfirmOrder from "./components/Cart/ConfirmOrder";
 import axios from "axios";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
 import Payment from "./components/Cart/Payment";
 import OrderSuccess from "./components/Cart/OrderSuccess";
 import MyOrders from "./components/Order/MyOrders";
@@ -41,11 +39,6 @@ import NotFound from "./components/layout/NotFound/NotFound";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
-  const [stripeApiKey, setStripeApiKey] = useState();
-  async function getStripeApiKey() {
-    const { data } = await axios.get("/api/v1/stripeapikey");
-    setStripeApiKey(data.stripeApiKey);
-  }
   useEffect(() => {
     WebFont.load({
       google: {
@@ -53,7 +46,6 @@ function App() {
       },
     });
     store.dispatch(loadUser());
-    getStripeApiKey();
   }, []);
   // no one can inspect page
 
@@ -69,16 +61,8 @@ function App() {
         <Route path="/products/:keyword" element={<Products />} />
         <Route exact path="/login" element={<LoginSignUp />} />
         <Route exact path="/cart" element={<Cart />} />
-        {stripeApiKey && (
-          <Route
-            path="/process/payment"
-            element={
-              <Elements stripe={loadStripe(stripeApiKey)}>
-                <Payment />
-              </Elements>
-            }
-          />
-        )}
+        <Route path="/process/payment" element={<Payment />} />
+        <Route path="/success" element={<OrderSuccess />} />
         <Route
           element={
             <ProtectedRoute
@@ -92,7 +76,6 @@ function App() {
           <Route exact path="/password/update" element={<UpdatePassword />} />
           <Route exact path="/shipping" element={<Shipping />} />
           <Route exact path="/order/confirm" element={<ConfirmOrder />} />
-          <Route exact path="/success" element={<OrderSuccess />} />
           <Route exact path="/orders" element={<MyOrders />} />
           <Route exact path="/order/:id" element={<OrderDetails />} />
         </Route>
