@@ -48,7 +48,7 @@ function Footer() {
             passion for eCommerce into a booming online website. We hope you
             enjoy our service as much as we enjoy offering them to you.
           </p>
-          <p className="copyrighted">Copyrighted {new Date().getFullYear()}</p>
+          <p className="copyrighted">Copyrighted 2022</p>
         </div>
         <div className="right-footer">
           <h3>Contact Us</h3>

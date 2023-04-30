@@ -4,6 +4,7 @@ import { useAlert } from "react-alert";
 import axios from "axios";
 import "./Payment.css";
 import { createOrder, clearErrors } from "../../actions/orderAction";
+import GadgetBazaarLogo from "../../images/logo.png";
 
 function Payment(props) {
   const dispatch = useDispatch();
@@ -49,7 +50,7 @@ function Payment(props) {
         currency: "INR",
         name: "GadgetBazaar.com",
         description: "Test Transaction",
-        image: "https://example.com/your_logo",
+        image: GadgetBazaarLogo,
         order_id: order.id,
         callback_url: "/api/v1/paymentverification",
         prefill: {
