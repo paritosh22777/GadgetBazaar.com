@@ -1,16 +1,11 @@
 import React, { Fragment, useEffect, useRef } from "react";
-import CheckoutSteps from "./CheckoutSteps";
-import Metadata from "../layout/Metadata";
-// import { Typography } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { useAlert } from "react-alert";
 import axios from "axios";
 import "./Payment.css";
-import { useNavigate } from "react-router-dom";
 import { createOrder, clearErrors } from "../../actions/orderAction";
 
-function Payment() {
-  const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
+function Payment(props) {
   const dispatch = useDispatch();
   const alert = useAlert();
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
@@ -18,16 +13,15 @@ function Payment() {
   const { error } = useSelector((state) => state.newOrder);
 
   const paymentData = {
-    amount: Math.round(orderInfo.totalPrice * 100), //in paise
+    amount: Math.round(props.orderInfo.totalPrice * 100),
   };
 
   const userOrder = {
     shippingInfo,
     orderItems: cartItems,
-    itemsPrice: orderInfo.subTotal,
-    taxPrice: orderInfo.tax,
-    deliveryCharges: orderInfo.shippingCharges,
-    totalPrice: orderInfo.totalPrice,
+    itemsPrice: props.orderInfo.subTotal,
+    taxPrice: props.orderInfo.tax,
+    totalPrice: props.orderInfo.totalPrice,
   };
 
   const submitHandler = async (event) => {
@@ -90,22 +84,15 @@ function Payment() {
   }, [dispatch, error, alert]);
 
   return (
-    <Fragment>
-      <Metadata title="Payment" />
-      <CheckoutSteps activeStep={2} />
-      <div className="payment-container">
-        <form
-          className="payment-form"
-          onSubmit={(event) => submitHandler(event)}
-        >
-          <input
-            type="submit"
-            value={`PAY ₹${orderInfo && orderInfo.totalPrice.toFixed(2)}`}
-            className="payment-form-button"
-          />
-        </form>
-      </div>
-    </Fragment>
+    <form className="payment-form" onSubmit={(event) => submitHandler(event)}>
+      <input
+        type="submit"
+        value={`PAY ₹${
+          props.orderInfo && props.orderInfo.totalPrice.toFixed(2)
+        }`}
+        className="payment-form-button"
+      />
+    </form>
   );
 }
 

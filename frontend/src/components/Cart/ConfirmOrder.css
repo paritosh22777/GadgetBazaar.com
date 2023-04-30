@@ -114,7 +114,7 @@
   padding: 2vmax 0;
 }
 
-.order-summary > button {
+/* .order-summary > button {
   background-color: tomato;
   color: white;
   width: 100%;
@@ -124,11 +124,11 @@
   cursor: pointer;
   transition: 0.5s;
   font: 400 1vmax "Roboto";
-}
+} */
 
-.order-summary > button:hover {
+/* .order-summary > button:hover {
   background-color: rgb(192, 71, 50);
-}
+} */
 
 @media screen and (max-width: 600px) {
   .confirm-order-page {
@@ -201,9 +201,9 @@
     padding: 5vw 0;
   }
 
-  .order-summary > button {
+  /* .order-summary > button {
     padding: 4vw;
     margin: 4vw auto;
     font: 400 4vw "Roboto";
-  }
+  } */
 }

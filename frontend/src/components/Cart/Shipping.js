@@ -6,10 +6,9 @@ import Metadata from "../layout/Metadata";
 import PinDropIcon from "@mui/icons-material/PinDrop";
 import HomeIcon from "@mui/icons-material/Home";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
-import PublicIcon from "@mui/icons-material/Public";
 import PhoneIcon from "@mui/icons-material/Phone";
 import TransferWithinAStationIcon from "@mui/icons-material/TransferWithinAStation";
-import { Country, State } from "country-state-city";
+import { State, City } from "country-state-city";
 import { useAlert } from "react-alert";
 import CheckoutSteps from "./CheckoutSteps";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +21,6 @@ function Shipping() {
   const [address, setAddress] = useState(shippingInfo.address);
   const [city, setCity] = useState(shippingInfo.city);
   const [state, setState] = useState(shippingInfo.state);
-  const [country, setCountry] = useState(shippingInfo.country);
   const [pinCode, setPinCode] = useState(shippingInfo.pinCode);
   const [phoneNumber, setPhoneNumber] = useState(shippingInfo.phoneNumber);
 
@@ -32,9 +30,7 @@ function Shipping() {
       alert.error("Phone number should be 10 digits long");
       return;
     }
-    dispatch(
-      saveShippingInfo({ address, city, state, country, pinCode, phoneNumber })
-    );
+    dispatch(saveShippingInfo({ address, city, state, pinCode, phoneNumber }));
     navigate("/order/confirm");
   };
 
@@ -61,16 +57,6 @@ function Shipping() {
               />
             </div>
             <div>
-              <LocationCityIcon />
-              <input
-                type="text"
-                placeholder="City"
-                required
-                value={city}
-                onChange={(event) => setCity(event.target.value)}
-              />
-            </div>
-            <div>
               <PinDropIcon />
               <input
                 type="number"
@@ -92,33 +78,33 @@ function Shipping() {
               />
             </div>
             <div>
-              <PublicIcon />
+              <TransferWithinAStationIcon />
               <select
                 required
-                value={country}
-                onChange={(event) => setCountry(event.target.value)}
+                value={state}
+                onChange={(event) => setState(event.target.value)}
               >
-                <option value="">Country</option>
-                {Country &&
-                  Country.getAllCountries().map((item) => (
+                <option value="">State</option>
+                {State &&
+                  State.getStatesOfCountry("IN").map((item) => (
                     <option key={item.isoCode} value={item.isoCode}>
                       {item.name}
                     </option>
                   ))}
               </select>
             </div>
-            {country && (
+            {state && (
               <div>
-                <TransferWithinAStationIcon />
+                <LocationCityIcon />
                 <select
                   required
-                  value={state}
-                  onChange={(event) => setState(event.target.value)}
+                  value={city}
+                  onChange={(event) => setCity(event.target.value)}
                 >
-                  <option value="">State</option>
-                  {State &&
-                    State.getStatesOfCountry(country).map((item) => (
-                      <option key={item.isoCode} value={item.isoCode}>
+                  <option value="">City</option>
+                  {City &&
+                    City.getCitiesOfState("IN", state).map((item) => (
+                      <option key={item.name} value={item.name}>
                         {item.name}
                       </option>
                     ))}

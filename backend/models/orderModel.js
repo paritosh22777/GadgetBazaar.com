@@ -14,11 +14,6 @@ const orderSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
-    // optional -> for India, default: "India"
-    country: {
-      type: String,
-      required: true,
-    },
     pinCode: {
       type: Number,
       required: true,
@@ -78,11 +73,6 @@ const orderSchema = new mongoose.Schema({
     default: 0,
   },
   taxPrice: {
-    type: Number,
-    required: true,
-    default: 0,
-  },
-  deliveryCharges: {
     type: Number,
     required: true,
     default: 0,

@@ -3,35 +3,27 @@ import CheckoutSteps from "./CheckoutSteps";
 import { useSelector } from "react-redux";
 import Metadata from "../layout/Metadata";
 import "./ConfirmOrder.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
+import Payment from "./Payment";
 
 function ConfirmOrder() {
-  const navigate = useNavigate();
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const subTotal = cartItems.reduce(
     (subtotal, item) => (subtotal = subtotal + item.quantity * item.price),
     0
   );
-  // const shippingCharges = subTotal > 25000 ? 0 : 500;
   const tax = subTotal * 0.18;
-  let totalPrice =
-    tax +
-    // shippingCharges +
-    subTotal;
-  const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.pinCode}, ${shippingInfo.state}, ${shippingInfo.country}`;
+  let totalPrice = tax + subTotal;
+  const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.pinCode}, ${shippingInfo.state}`;
 
-  const proceedToPaymentHandler = () => {
-    const data = {
-      subTotal,
-      // shippingCharges,
-      tax,
-      totalPrice,
-    };
-    sessionStorage.setItem("orderInfo", JSON.stringify(data));
-    navigate("/process/payment");
+  const data = {
+    subTotal,
+    tax,
+    totalPrice,
   };
+
   return (
     <Fragment>
       <Metadata title="Confirm Order" />
@@ -80,10 +72,6 @@ function ConfirmOrder() {
                 <p>Subtotal: </p>
                 <span>₹{subTotal}</span>
               </div>
-              {/* <div>
-                <p>Shipping Charges:</p>
-                <span>₹{shippingCharges}</span>
-              </div> */}
               <div>
                 <p>GST: </p>
                 <span>₹{tax.toFixed(2)}</span>
@@ -95,9 +83,7 @@ function ConfirmOrder() {
               </p>
               <span>₹{totalPrice.toFixed(2)}</span>
             </div>
-            <button onClick={proceedToPaymentHandler}>
-              PROCEED TO PAYMENT
-            </button>
+            <Payment orderInfo={data} />
           </div>
         </div>
       </div>

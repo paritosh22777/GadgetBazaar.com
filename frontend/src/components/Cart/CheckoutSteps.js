@@ -2,7 +2,6 @@ import { Step, StepLabel, Stepper, Typography } from "@mui/material";
 import React, { Fragment } from "react";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import LibraryAddCheckIcon from "@mui/icons-material/LibraryAddCheck";
-import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import "./CheckoutSteps.css";
 
 function CheckoutSteps({ activeStep }) {
@@ -12,17 +11,10 @@ function CheckoutSteps({ activeStep }) {
       icon: <LocalShippingIcon />,
     },
     {
-      label: <Typography>Confirm Details</Typography>,
+      label: <Typography>Confirm Details & Payment</Typography>,
       icon: <LibraryAddCheckIcon />,
     },
-    {
-      label: <Typography>Payment</Typography>,
-      icon: <AccountBalanceWalletIcon />,
-    },
   ];
-  //   const stepStyle = {
-  //     boxSizing: "border-box",
-  //   };
   return (
     <Fragment>
       <Stepper

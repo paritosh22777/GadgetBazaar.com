@@ -6,7 +6,7 @@
 5. Images of products and user profile get stored on Cloudinary platform.
 6. Use of Nodemailer module to send email automatically to user for password recovery.
 7. Tested the APIs using Postman.
-8. Deployed on Render.com.
-
+8. Deployed on Heroku.
+9. Note: Use 4000003560000008 as card number for testing Stripe API payment service.
 # Live link :-
 https://gadgetbazaar-com.onrender.com
