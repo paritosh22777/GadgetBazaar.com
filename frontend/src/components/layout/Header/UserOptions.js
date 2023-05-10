@@ -59,6 +59,8 @@ function UserOptions({ user }) {
       name: "Dashboard",
       function: dashboard,
     });
+    options.splice(1, 2);
+    options.splice(2, 1);
   }
 
   function dashboard() {
