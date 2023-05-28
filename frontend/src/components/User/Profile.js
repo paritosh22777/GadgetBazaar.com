@@ -40,7 +40,7 @@ function Profile() {
                 <p>{String(user.createdAt).substring(0, 10)}</p>
               </div>
               <div>
-                <Link to="/orders">My Orders</Link>
+                {user.role === "user" && <Link to="/orders">My Orders</Link>}
                 <Link to="/password/update">Change Password</Link>
               </div>
             </div>
